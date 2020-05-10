@@ -1,6 +1,6 @@
 === ACF Edit in Elementor ===
-Contributors: hlashbrooke
-Donate link: http://www.hughlashbrooke.com/donate
+Contributors: joelnewcomer
+Donate link: https://joelnewcomer.com/donate
 Tags: wordpress, plugin, template
 Requires at least: 3.9
 Tested up to: 4.0
@@ -8,11 +8,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This is where you craft a short, punchy description of your plugin
+Allows you to edit ACF fields from the Elementor Page Settings tab.
 
 == Description ==
 
-This is where you can give a much longer description of your plugin that you can use to explain just how it awesome it really is.
+Allows you to edit ACF fields from the Elementor Page Settings tab.
 
 == Installation ==
 
@@ -30,9 +30,9 @@ Installing "ACF Edit in Elementor" can be done either by searching for "ACF Edit
 
 == Frequently Asked Questions ==
 
-= What is the plugin template for? =
+= Where is the settings page? =
 
-This plugin template is designed to help you get started with any new WordPress plugin.
+There is no settings page. It is just plug and play.
 
 == Changelog ==
 
