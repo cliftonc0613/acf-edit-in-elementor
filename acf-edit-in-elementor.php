@@ -46,9 +46,8 @@ function acf_edit_in_elementor() {
 
 acf_edit_in_elementor();
 
-
 // Add custom controls to the Page Settings inside the Elementor Global Options.
-if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
+if ( ! function_exists( 'eaie_add_custom_controls_elem_page_settings_top' ) ) {
     function th_add_custom_controls_elem_page_settings_top(Elementor\Core\DocumentTypes\Page $page) {
         if(isset($page) && $page->get_id() > ""){
 			$page->add_control(
