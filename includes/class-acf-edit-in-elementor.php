@@ -185,30 +185,6 @@ class ACF_Edit_in_Elementor {
 	}
 
 	/**
-	 * Load frontend CSS.
-	 *
-	 * @access  public
-	 * @return void
-	 * @since   1.0.0
-	 */
-	public function enqueue_styles() {
-		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-frontend' );
-	} // End enqueue_styles ()
-
-	/**
-	 * Load frontend Javascript.
-	 *
-	 * @access  public
-	 * @return  void
-	 * @since   1.0.0
-	 */
-	public function enqueue_scripts() {
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true );
-		wp_enqueue_script( $this->_token . '-frontend' );
-	} // End enqueue_scripts ()
-
-	/**
 	 * Admin enqueue style.
 	 *
 	 * @param string $hook Hook parameter.
