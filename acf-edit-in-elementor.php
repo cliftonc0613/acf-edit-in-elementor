@@ -2,10 +2,10 @@
 /**
  * Plugin Name: ACF Edit in Elementor
  * Version: 1.0.0
- * Plugin URI: http://www.hughlashbrooke.com/
- * Description: This is your starter template for your next WordPress plugin.
+ * Plugin URI: https://drumcreative.com/
+ * Description: Edit ACF fields from the Elementor Page Settings tab.
  * Author: Hugh Lashbrooke
- * Author URI: http://www.hughlashbrooke.com/
+ * Author URI: https://drumcreative.com/
  * Requires at least: 4.0
  * Tested up to: 4.0
  *
@@ -13,7 +13,7 @@
  * Domain Path: /lang/
  *
  * @package WordPress
- * @author Hugh Lashbrooke
+ * @author Joel Newcomer
  * @since 1.0.0
  */
 
