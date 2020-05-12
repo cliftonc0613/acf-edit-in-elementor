@@ -128,8 +128,8 @@ class ACF_Edit_in_Elementor_Settings {
 			array(
 				'location'    => 'options', // Possible settings: options, menu, submenu.
 				'parent_slug' => 'options-general.php',
-				'page_title'  => __( 'Plugin Settings', 'acf-edit-in-elementor' ),
-				'menu_title'  => __( 'Plugin Settings', 'acf-edit-in-elementor' ),
+				'page_title'  => __( 'Edit ACF in Elementor', 'acf-edit-in-elementor' ),
+				'menu_title'  => __( 'Edit ACF in Elementor', 'acf-edit-in-elementor' ),
 				'capability'  => 'manage_options',
 				'menu_slug'   => $this->parent->_token . '_settings',
 				'function'    => array( $this, 'settings_page' ),

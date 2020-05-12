@@ -4,7 +4,7 @@
  * Version: 1.0.0
  * Plugin URI: https://drumcreative.com/
  * Description: Edit ACF fields from the Elementor Page Settings tab.
- * Author: Hugh Lashbrooke
+ * Author: Joel Newcomer
  * Author URI: https://drumcreative.com/
  * Requires at least: 4.0
  * Tested up to: 4.0
@@ -60,7 +60,7 @@ if ( ! function_exists( 'eaie_add_custom_controls_elem_page_settings_top' ) ) {
 			);
 
             $page->add_control(
-                'first_content_header',
+                'header',
                 [
                     'label' => __( 'First Content Header', 'edit-acf-in-elementor' ),
                     'type' => \Elementor\Controls_Manager::TEXT,
@@ -89,14 +89,16 @@ add_action( 'save_post', 'save_page_settings_to_acf' );
 // Save Elementor page settings to ACF
 function save_page_settings_to_acf($post_id) {
     $page_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
-    update_field('first_content_header', $page_settings['first_content_header'], $post_id); ?>
+    update_field('header', $page_settings['header'], $post_id); ?>
     <script>
+	location.reload();
+	return false;
 	// Page Settings Panel - onchange save and reload elementor window.
-	jQuery( function( $ ) {
+	/* jQuery( function( $ ) {
     	if (typeof $e != "undefined" ){
             elementor.reloadPreview();
         }
-	});
+	}); */
 	</script>    
 <?php }    
     
@@ -109,7 +111,7 @@ function post_meta( $atts, $content ) {
 }
 add_shortcode ('post-meta', 'post_meta');
 
-add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
-function th_enqueue_before_editor() {
-    wp_enqueue_script( 'acf-edit-in-elementor', get_stylesheet_directory_uri() . '/assets/js/acf-edit-in-elementor.js', array( 'jquery' ) );
+add_action( 'elementor/editor/before_enqueue_scripts', 'aeie_enqueue_before_editor' );
+function aeie_enqueue_before_editor() {
+    wp_enqueue_script( 'acf-edit-in-elementor', plugin_dir_url( __FILE__ ) . '/assets/js/acf-edit-in-elementor.js', array( 'jquery' ) );
 }
