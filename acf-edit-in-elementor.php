@@ -46,10 +46,29 @@ function acf_edit_in_elementor() {
 
 acf_edit_in_elementor();
 
+function map_acf_to_el_field_type($acf_field_type) {
+	if ($acf_field_type == 'text') {
+		return \Elementor\Controls_Manager::TEXT;
+	}
+	if ($acf_field_type == 'textarea') {	
+		return \Elementor\Controls_Manager::TEXTAREA;
+	}
+}
+
 // Add custom controls to the Page Settings inside the Elementor Global Options.
 if ( ! function_exists( 'eaie_add_custom_controls_elem_page_settings_top' ) ) {
     function th_add_custom_controls_elem_page_settings_top(Elementor\Core\DocumentTypes\Page $page) {
         if(isset($page) && $page->get_id() > ""){
+	        $fields = get_field_objects($page->get_id());
+	        $message = '<pre>';
+	        $message .= print_r($fields,true);
+	        $message .= '</pre>';
+	        ?>
+	        <script>
+		        // alert("");
+		        </script>
+	        <?php
+		    // ACF Fields Header control
 			$page->add_control(
 				'acf_fields_header',
 				[
@@ -58,16 +77,21 @@ if ( ! function_exists( 'eaie_add_custom_controls_elem_page_settings_top' ) ) {
 					'separator' => 'before',
 				]
 			);
+			
+			foreach ($fields as $field) {
 
             $page->add_control(
-                'header',
+                $field['name'],
                 [
-                    'label' => __( 'First Content Header', 'edit-acf-in-elementor' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
-                    'default' => 'My Header',
+                    'label' => __( $field['label'], 'edit-acf-in-elementor' ),
+                    'type' => map_acf_to_el_field_type($field['type']),
+                    'default' => $field['value'],
                     'return_value' => 'yes',
                 ]
             );
+
+			    
+		    }
             
             $page->add_control(
 				'refresh_preview',
@@ -89,18 +113,13 @@ add_action( 'save_post', 'save_page_settings_to_acf' );
 // Save Elementor page settings to ACF
 function save_page_settings_to_acf($post_id) {
     $page_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
-    update_field('header', $page_settings['header'], $post_id); ?>
-    <script>
-	location.reload();
-	return false;
-	// Page Settings Panel - onchange save and reload elementor window.
-	/* jQuery( function( $ ) {
-    	if (typeof $e != "undefined" ){
-            elementor.reloadPreview();
-        }
-	}); */
-	</script>    
-<?php }    
+    if ($page_settings) {
+	    $fields = get_field_objects($post_id);
+	    foreach ($fields as $field) {
+		    update_field($field['name'], $page_settings[$field['name']], $post_id);
+		}
+	}
+}    
     
 // Add post-meta shortcode
 function post_meta( $atts, $content ) {
