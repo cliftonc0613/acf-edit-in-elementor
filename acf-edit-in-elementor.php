@@ -72,7 +72,7 @@ if ( ! function_exists( 'eaie_add_custom_controls_elem_page_settings_top' ) ) {
 			$page->add_control(
 				'acf_fields_header',
 				[
-					'label' => __( 'Custom Fields', 'th-widget-pack' ),
+					'label' => __( 'Custom Fields', 'edit-acf-in-elementor' ),
 					'type' => \Elementor\Controls_Manager::HEADING,
 					'separator' => 'before',
 				]
